@@ -17,11 +17,10 @@ export class LoginComponent implements OnInit {
   });
 
   submit() {
-    window.sessionStorage.setItem('isLoggedIn' , 'true');
-    this.router.navigate(['board']);
-    // if (this.form.valid) {
-    //   // this.submitEM.emit(this.form.value);
-    // }
+    if (this.form.valid && this.form.value.password && this.form.value.username) {
+      window.sessionStorage.setItem('isLoggedIn' , 'true');
+      this.router.navigate(['board']);
+    }
   }
 
   ngOnInit() {
