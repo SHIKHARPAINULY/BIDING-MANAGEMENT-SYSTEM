@@ -1,0 +1,57 @@
+
+ <div class="container">
+    <div class="row" *ngFor="let items of ItemArray">
+        <div class="col-md-10 mt-4 ml-auto mr-auto">
+                <div class="alert alert-primary" role="alert">
+                   <h4 class="text-center">{{items.itemName}}</h4>
+                    <div class="row">
+                        <div class="col-md-10 mt-5 ml-auto mr-auto alert alert-secondary">
+                            <div class="row text-center">
+                                <div class="col-md-6">
+                                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                                        <img *ngIf="ItemImageSrc == 'Creative Art' " src='../../assets/images/art1.jpg' class="d-block w-100" alt=".Creative.">
+                                        <img *ngIf="ItemImageSrc == 'Sketch Art'" src='../../assets/images/art7.jpg' class="d-block w-100" alt=".Food.">
+                                        <img *ngIf="ItemImageSrc == 'Brush Art'" src='../../assets/images/art3.jpg' class="d-block w-100" alt=".New.">
+                                        <img *ngIf="ItemImageSrc == 'Painting'" src='../../assets/images/art9.jpg' class="d-block w-100" alt=".Painting.">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                        <div class="alert alert-success" role="alert">
+                                                <h5>Time Ends in </h5>
+                                                <!-- <countdown #cd [config]="config" (event)="handleEvent($event)"></countdown> -->
+                                                <div class="alert alert-danger" role="alert">
+                                                    <countdown [config]="{leftTime: 20, format:'m:s' }" (event)="handleEvent($event , items.itemName)"></countdown>
+                                                </div>
+                                        </div>
+
+                                        <div class="alert alert-info" role="alert">
+                                            Your Bidding price is = {{ItemBidPrice| currency}}
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-10 mt-5 ml-auto mr-auto alert alert alert-secondary">
+                            <div class="row text-center">
+                                <div class="col-md-4 ">
+                                    <h5>Base Price</h5>
+                                  <button class="btn btn-outline-secondary" disabled style="cursor: pointer"> {{items.itemBasePrice | currency}} </button>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5> Raise Bid</h5>
+                                   <button *ngIf="items.status" class="btn btn-outline-success" (click)="changePrice()"> RaiseBid +1530</button>
+                                   <button *ngIf="!items.status" class="btn btn-outline-warning" disabled> Biding Over</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5> Quit Biding</h5>
+                                <button class="btn btn-outline-danger" (click)="Quit()">{{Cancel}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+        </div>
+    </div>
+</div> 
