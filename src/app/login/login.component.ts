@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   });
 
   submit() {
+    // length is required
     if (this.form.valid && this.form.value.password && this.form.value.username) {
       window.sessionStorage.setItem('isLoggedIn' , 'true');
       this.router.navigate(['board']);
